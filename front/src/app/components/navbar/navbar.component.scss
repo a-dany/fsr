@@ -1,0 +1,23 @@
+[navbar] {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    z-index: 999;
+    &.homepage {
+        height: 100px;
+        --p: 5em;
+        padding-right: var(--p);
+        padding-left : var(--p);
+        margin-top: 3em;
+        background-color: transparent !important;
+        [links] {
+            font-size: 13pt;
+        }
+    }
+    &:not(.homepage) {
+        --p: 3rem;
+        padding-right: var(--p);
+        padding-left : var(--p);
+        box-shadow: 0 0 20PX #0b162826
+    }
+}

@@ -1,0 +1,18 @@
+<nav navbar class="navbar py-3 bg-white" [class.homepage]="isHomePage">
+
+    <div class="d-flex flex-row align-items-center" [class.col-11]="isHomePage" [class.mx-auto]="isHomePage">
+
+        <a class="navbar-brand f-lexend col-7" [routerLink]="['/']">
+            <span style="font-weight: 300;">Contact</span>
+            <strong>Wallet</strong>
+        </a>
+        <div links class="d-flex flex-row gap-5 px-5 col-5 justify-content-around">
+            <a class="nav-link" [routerLink]="['/']">Home</a>
+            <a class="nav-link" [routerLink]="['']">Groups</a>
+            <a class="nav-link" [routerLink]="['contacts']">Contacts</a>
+            <a class="nav-link f-icon fs-5" [routerLink]="['']">sort</a>
+        </div>
+
+    </div>
+
+</nav>

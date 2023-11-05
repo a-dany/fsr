@@ -10,29 +10,25 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.lip6.dtos.Contact;
 import com.lip6.dtos.PhoneNumber;
-import com.lip6.services.IContactService;
+import com.lip6.services.ContactService;
 
-@Controller
-//  @Path("/contacts")
-@RestController @RequestMapping("/contacts")
+// @Controller
+// @RestController @RequestMapping("/contacts")
+@Path("/contacts")
 public class ContactController {
 
 
     /***| INIT |***/
     
-    private final IContactService service;
+    // private final IContactService service;
+    private ContactService service;
     
-    @Autowired
-    public ContactController(IContactService service) {
-        this.service = service;
+    // @Autowired
+    public ContactController() {
+        this.service = new ContactService();
     }
 
     
@@ -50,9 +46,9 @@ public class ContactController {
         return this.service.get(id).map(Response::ok).orElse(Response.status(404)).build();
     }
 
-    // @POST
-    // @Consumes({MediaType.APPLICATION_JSON})
-    // @Produces({MediaType.APPLICATION_JSON})
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     @PostMapping()
     public Response create(Contact contact) {
         return Response.status(

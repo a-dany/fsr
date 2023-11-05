@@ -1,0 +1,16 @@
+[page] {
+    height: 100vh;
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        top: -142px;
+        left: 700px;
+        height: 200%;
+        width: 100%;
+        rotate: -45deg;
+        background: #4f4f4f0a;
+        border-radius: 15px;
+        pointer-events: none;
+    }
+}
