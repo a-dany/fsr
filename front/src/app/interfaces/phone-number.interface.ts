@@ -1,3 +1,5 @@
 export interface PhoneNumber {
-    // TODO : Finish
+    id: number,
+    phoneKind: string,
+    phoneNumber: string
 }

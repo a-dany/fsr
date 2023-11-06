@@ -27,7 +27,9 @@
 /***| OVERRIDES |***/
 
 // h1 { text-shadow: 0px 4px 7PX #0d1d2929; }
-// .btn { font-weight: 300 !important; }
+.btn { 
+    border-radius: 3px;
+}
 
 
 /***| STYLE |***/
@@ -44,10 +46,12 @@
 [apptext] {
     color: var(--color-text);
 }
-[appinput] {
+[appsearch] {
     box-shadow: 0 0 25PX #2023271f !important;
-    border: solid 1px #00000014;
-    border-radius: 7px;
+    // border: solid 1px #00000014;
+    border-color: transparent;
+    // border-radius: 7px;
+    border-radius: 999px;
     --p: .8em;
     padding-top: var(--p);
     padding-bottom: var(--p);
@@ -56,4 +60,16 @@
 hr[pagemargin] {
     opacity: 0;
     margin-top: 7.2em;
+}
+[scrolling] {
+    &::-webkit-scrollbar { width: 10px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { 
+        background: #00000030; 
+        border-radius: 999px;
+        transition-duration: .3s;
+        &:hover {
+            background: #00000070; 
+        }
+    }
 }

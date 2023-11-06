@@ -7,20 +7,22 @@
     <div class="row w-100 mt-3">
         
         <!-- LEFT SIDE -->
-        <div class="col-lg-6">
+        <div class="col-lg-5">
             <h1 class="f-poppins fw-bold mb-4">Contact List</h1>
             <span apptext>
                 Check out all your stored contacts here. Update and create contacts. Search specific contacts with the searchbar.
             </span>
-            <div class="mt-5">
-                <input appinput class="form-control w-100 px-4" type="text" placeholder="Search"/>
-            </div>
-            <button appbtn class="btn btn-outline-primary mt-5 col-5 py-2">Create</button>
+            <button appbtn class="btn btn-warning mt-5 col-5 py-2">Create</button>
         </div>
         <!-- RIGHT SIDE -->
-        <div class="col-lg-6 px-lg-5" style="height: 35em;">
-            <div class="container border border-2 border-warning w-100 h-100 rounded-3">
-                <app-contact-item></app-contact-item>
+        <div class="col-lg-7 px-lg-5" style="height: 35em;">
+            <div class="container w-100 h-100" style="padding: 0 !important;">
+                <input appsearch class="form-control w-100 px-4 py-3" type="text" placeholder="Search"/>
+                <div contacts scrolling class="d-flex flex-column mt-4 overflow-auto" style="height: 83%;">
+                    <div *ngFor="let contact of list">
+                        <app-contact-item [contact]="contact" (clickEvent)="redirect($event)"></app-contact-item>
+                    </div>
+                </div>
             </div>
         </div>
 

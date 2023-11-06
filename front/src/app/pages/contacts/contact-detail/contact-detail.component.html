@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<hr pagemargin />
+
+<div class="container mx-auto col-lg-9">
+
+    <div class="row w-100 mt-3">
+        
+        <!-- LEFT SIDE -->
+        <div class="col-lg-5">
+            <h1 class="f-poppins fw-bold mb-4">Contact Detail</h1>
+            <span apptext>
+                Check out all your stored contacts here. Update and create contacts. Search specific contacts with the searchbar.
+            </span>
+            <button appbtn class="btn btn-warning mt-5 col-5 py-2">Update</button>
+        </div>
+        <!-- RIGHT SIDE -->
+        <div class="col-lg-7 px-lg-5" style="height: 35em;">
+            <div class="container h-100 rounded-3 col-9 mx-auto overflow-auto p-5" style="box-shadow: 0 0 50PX #090e201c">
+                <div>{{this?.contact?.firstName}}</div>
+                <div>{{this?.contact?.lastName}}</div>
+                <div>{{this?.contact?.email}}</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

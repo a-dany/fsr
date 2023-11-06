@@ -1,3 +1,6 @@
 export interface Address {
-    // TODO : Finish
+    city: string,
+    country: string,
+    street: string,
+    zip: string
 }
