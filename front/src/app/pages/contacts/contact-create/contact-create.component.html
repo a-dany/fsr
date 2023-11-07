@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+
+<hr pagemargin />
+
+<div class="container mx-auto col-lg-9 mb-5">
+
+    <div class="row w-100 mt-3">
+        
+        <!-- LEFT SIDE -->
+        <div class="col-lg-7  px-lg-5">
+            <div scrolling class="container h-100 rounded-3 col-12 mx-auto p-5" style="box-shadow: 0 0 50PX #090e201c">
+                <!-- Form here -->
+                <div class="f-lexend fs-5">Identifier</div>
+                <div class="row mt-4">
+                    <div appinput class="col-6">
+                        <input class="form-control py-2" type="text"/>
+                        <span class="f-lexend fw-light">First Name</span>
+                    </div>
+                    <div appinput class="col-6">
+                        <input class="form-control py-2" type="text"/>
+                        <span class="f-lexend fw-light">Last Name</span>
+                    </div>
+                </div>
+                <div appinput class="col-12 mt-2">
+                    <input class="form-control py-2" type="text"/>
+                    <span class="f-lexend fw-light">Email</span>
+                </div>
+                
+                <hr appdivider class="col-4 mt-5"/>
+
+                <div class="f-lexend fs-5 mt-5">Address</div>
+                <div class="row mt-4">
+                    <div appinput class="col-12 mt-2">
+                        <input class="form-control py-2" type="text"/>
+                        <span class="f-lexend fw-light">Street</span>
+                    </div>
+                    <div appinput class="col-7 mt-2">
+                        <input class="form-control py-2" type="text"/>
+                        <span class="f-lexend fw-light">City</span>
+                    </div>
+                    <div appinput class="col-5 mt-2">
+                        <input class="form-control py-2" type="number"/>
+                        <span class="f-lexend fw-light">Zip Code</span>
+                    </div>
+                    <div appinput class="col-12 mt-2">
+                        <input class="form-control py-2" type="text"/>
+                        <span class="f-lexend fw-light">Country</span>
+                    </div>
+                </div>
+
+                <hr appdivider class="col-4 mt-5"/>
+
+                <div class="f-lexend fs-5 mt-5">Phone numbers</div>
+                <div class="mt-4">
+                    <input class="form-control py-2 w-100" type="text"/>
+                    <!-- <input class="form-control py-2 w-100 mt-2" type="text"/> -->
+                </div>
+                <!-- End form -->
+            </div>
+        </div>
+        <!-- RIGHT SIDE -->
+        <div class="col-lg-5">
+            <h1 class="f-poppins fw-bold mb-4">Create Contact</h1>
+            <div apptext>
+                Check out all your stored contacts here. Update and create contacts. Search specific contacts with the searchbar.
+            </div>
+            <button appbtn class="btn btn-warning mt-5 col-5 py-2" [routerLink]="['../']">Contact List</button>
+        </div>
+
+    </div>
+
+</div>

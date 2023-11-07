@@ -20,4 +20,23 @@
         padding-left : var(--p);
         box-shadow: 0 0 20PX #0b162826
     }
+    .nav-link {
+        position: relative;
+        &:not(.f-icon)::after {
+            content: '';
+            content: "";
+            position: absolute;
+            border: solid 2px #95bfab;
+            border-radius: 999px;
+            bottom: 0;
+            left: 0;
+            width: 80%;
+            box-shadow: 0 0 6PX #bffade;
+            transform-origin: center;
+            transform: scaleX(0);
+            &:is(.active,:hover) {
+                transform: scaleX(1);
+            }
+        }
+    }
 }

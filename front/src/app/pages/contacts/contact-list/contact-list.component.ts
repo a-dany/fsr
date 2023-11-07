@@ -22,7 +22,7 @@ export class ContactListComponent implements OnInit {
   }
 
   public redirect(evt:number) {
-    this._router.navigate(['contacts', evt]);
+    this._router.navigate(['contacts/id', evt]);
   }
 
 }
