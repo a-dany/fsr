@@ -1,4 +1,4 @@
-<nav navbar class="navbar py-3 bg-white" [class.homepage]="isHomePage">
+<nav navbar class="navbar py-3 bg-white position-absolute top-0" [class.homepage]="isHomePage">
 
     <div class="d-flex flex-row align-items-center" [class.col-11]="isHomePage" [class.mx-auto]="isHomePage">
 
@@ -10,7 +10,7 @@
             <a class="nav-link" [routerLink]="['/']">Home</a>
             <a class="nav-link" [routerLink]="['/']">Groups</a>
             <a class="nav-link" [routerLink]="['/contacts']">Contacts</a>
-            <a class="nav-link f-icon fs-5" [routerLink]="['']">sort</a>
+            <a class="nav-link f-icon fs-5">sort</a>
         </div>
 
     </div>

@@ -1,8 +1,16 @@
 [navbar] {
-    position: absolute;
+    $color: #95bfab;
+    // position: sticky !important;
     top: 0; left: 0;
     width: 100%;
     z-index: 999;
+    & .f-icon {
+        transition-duration: .2s;
+        cursor: pointer;
+        &:hover { 
+            color: $color; 
+        }
+    }
     &.homepage {
         height: 100px;
         --p: 5em;
@@ -13,6 +21,7 @@
         [links] {
             font-size: 13pt;
         }
+        &::after { bottom: 5px !important }
     }
     &:not(.homepage) {
         --p: 3rem;
@@ -24,19 +33,19 @@
         position: relative;
         &:not(.f-icon)::after {
             content: '';
-            content: "";
             position: absolute;
-            border: solid 2px #95bfab;
+            border: solid 1px $color;
             border-radius: 999px;
-            bottom: 0;
+            bottom: 0px;
             left: 0;
             width: 80%;
             box-shadow: 0 0 6PX #bffade;
-            transform-origin: center;
             transform: scaleX(0);
-            &:is(.active,:hover) {
-                transform: scaleX(1);
-            }
+            transform-origin: left;
+            transition-duration: .3s;
+        }
+        &:is(.active,:hover)::after {
+            transform: scaleX(1);
         }
     }
 }

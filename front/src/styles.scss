@@ -82,5 +82,7 @@ hr[appdivider] {
 [appinput] {
     display: flex;
     flex-direction: column-reverse;
+    &>:is(input,span) { transition-duration: .2s; }
     &>span  { font-size: 11pt; }
+    input:focus + span { color: #6491d2; }
 }
