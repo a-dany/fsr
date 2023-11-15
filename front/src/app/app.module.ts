@@ -8,6 +8,7 @@ import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactDetailComponent } from './pages/contacts/contact-detail/contact-detail.component';
 import { ContactCreateComponent } from './pages/contacts/contact-create/contact-create.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ContactCreateComponent } from './pages/contacts/contact-create/contact-
     BrowserModule,
     AppRoutingModule,
     ComponentsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

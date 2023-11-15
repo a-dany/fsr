@@ -8,16 +8,22 @@ import { Contact } from '../interfaces/contact.interface';
 })
 export class ContactService {
 
+  
   private url='http://localhost:8082/api/contacts';
   constructor( 
     private http:HttpClient 
   ) {}
 
+
   public get():Observable<Contact[]> {
     return this.http.get<Contact[]>(this.url);
   }
-  getId(id:string):Observable<Contact> {
+  public getId(id:string):Observable<Contact> {
     return this.http.get<Contact>(`${this.url}/${id}`)
   }
+  public save(c: Contact):Observable<any> {
+    return this.http.post<Contact>( this.url, {} )
+  }
+
 
 }

@@ -3,65 +3,76 @@
 <hr pagemargin />
 
 <div class="container mx-auto col-lg-9 mb-5">
-
     <div class="row w-100 mt-3">
 
         <!-- LEFT SIDE -->
         <div class="col-lg-7 px-lg-5">
             <div scrolling class="container h-100 rounded-3 col-12 mx-auto p-5" style="box-shadow: 0 0 50PX #090e201c">
-                <!-- Form here -->
-                <div class="f-lexend fs-5">Identifier</div>
-                <div class="row mt-4">
-                    <div appinput class="col-6">
-                        <input class="form-control py-2" type="text" />
-                        <span class="f-lexend fw-light">First Name</span>
+                
+                <!-- IDENTITY -->
+                <form #identityForm="ngForm">
+                    <div class="f-lexend fs-5">Identifier</div>
+                    <div class="row mt-4">
+                        <div appinput class="col-6">
+                            <input class="form-control py-2" type="text" name="fname" ngModel value="First"/>
+                            <span class="f-lexend fw-light">First Name</span>
+                        </div>
+                        <div appinput class="col-6">
+                            <input class="form-control py-2" type="text" name="lname" ngModel value="LastName"/>
+                            <span class="f-lexend fw-light">Last Name</span>
+                        </div>
                     </div>
-                    <div appinput class="col-6">
-                        <input class="form-control py-2" type="text" />
-                        <span class="f-lexend fw-light">Last Name</span>
+                    <div appinput class="col-12 mt-2">
+                        <input class="form-control py-2" type="text" name="mail" ngModel value="mail@gmail.com"/>
+                        <span class="f-lexend fw-light">Email</span>
                     </div>
-                </div>
-                <div appinput class="col-12 mt-2">
-                    <input class="form-control py-2" type="text" />
-                    <span class="f-lexend fw-light">Email</span>
-                </div>
+                </form>
+                <!-- END: IDENTITY -->
 
                 <hr appdivider class="col-4 mt-5" />
 
-                <div class="f-lexend fs-5 mt-5">Address</div>
-                <div class="row mt-4">
-                    <div appinput class="col-12 mt-2">
-                        <input class="form-control py-2" type="text" />
-                        <span class="f-lexend fw-light">Street</span>
+                <!-- ADDRESS -->
+                <form #addressForm="ngForm">
+                    <div class="f-lexend fs-5 mt-5">Address</div>
+                    <div class="row mt-4">
+                        <div appinput class="col-12 mt-2">
+                            <input class="form-control py-2" type="text" name="street" ngModel value="123 Street View"/>
+                            <span class="f-lexend fw-light">Street</span>
+                        </div>
+                        <div appinput class="col-7 mt-2">
+                            <input class="form-control py-2" type="text" name="city" ngModel value="NY"/>
+                            <span class="f-lexend fw-light">City</span>
+                        </div>
+                        <div appinput class="col-5 mt-2">
+                            <input class="form-control py-2" type="number" name="zip" ngModel value="82000"/>
+                            <span class="f-lexend fw-light">Zip Code</span>
+                        </div>
+                        <div appinput class="col-12 mt-2">
+                            <input class="form-control py-2" type="text" name="country" ngModel value="Country"/>
+                            <span class="f-lexend fw-light">Country</span>
+                        </div>
                     </div>
-                    <div appinput class="col-7 mt-2">
-                        <input class="form-control py-2" type="text" />
-                        <span class="f-lexend fw-light">City</span>
-                    </div>
-                    <div appinput class="col-5 mt-2">
-                        <input class="form-control py-2" type="number" />
-                        <span class="f-lexend fw-light">Zip Code</span>
-                    </div>
-                    <div appinput class="col-12 mt-2">
-                        <input class="form-control py-2" type="text" />
-                        <span class="f-lexend fw-light">Country</span>
-                    </div>
-                </div>
+                </form>
+                <!-- END: ADDRESS -->
 
                 <hr appdivider class="col-4 mt-5" />
 
-                <div class="f-lexend fs-5 mt-5">Phone numbers</div>
-                <div class="mt-4">
-                    <input class="form-control py-2 w-100" type="text" />
-                    <!-- <input class="form-control py-2 w-100 mt-2" type="text"/> -->
-                </div>
+                <!-- PHONES -->
+                <form #phoneForm="ngForm">
+                    <div class="f-lexend fs-5 mt-5">Phone numbers</div>
+                    <div class="mt-4">
+                        <input class="form-control py-2 w-100" type="text" value="0789012345" name="phoneNumber" ngModel/>
+                    </div>
+                </form>
+                <!-- END: PHONES -->
 
                 <div class="mt-5">
-                    <div class="btn btn-outline-primary w-100 py-2">Save Contact</div>
+                    <div class="btn btn-outline-primary w-100 py-2" (click)="submit(identityForm, addressForm, phoneForm)">Save Contact</div>
                 </div>
-                <!-- End form -->
+
             </div>
         </div>
+
         <!-- RIGHT SIDE -->
         <div class="col-lg-5">
             <div style="position: sticky; top: 8.5em;">
@@ -74,5 +85,4 @@
         </div>
 
     </div>
-
 </div>
