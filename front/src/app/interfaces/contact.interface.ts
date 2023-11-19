@@ -1,5 +1,5 @@
 import { Address } from "./address.interface";
-import { PhoneNumber } from "./phone-number.interface";
+import { PhoneNumber, PostPhoneNumber } from "./phone-number.interface";
 
 export interface Contact {
     idContact:number,
@@ -8,4 +8,11 @@ export interface Contact {
     email:string,
     address: Address,
     phoneNumbers:PhoneNumber[]
+}
+export interface PostContact {
+    firstName:string,
+    lastName:string,
+    email:string,
+    address: Address,
+    phoneNumbers:PostPhoneNumber[]
 }

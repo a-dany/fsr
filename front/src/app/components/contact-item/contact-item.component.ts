@@ -8,15 +8,24 @@ import { Contact } from 'src/app/interfaces/contact.interface';
 })
 export class ContactItemComponent implements OnInit {
 
+  
   @Input() contact?:Contact;
-  @Output() clickEvent = new EventEmitter<number>();
 
+  @Output() clickEvent  = new EventEmitter<number>();
+  @Output() deleteEvent = new EventEmitter<number>();
+
+  
   constructor() { }
   ngOnInit(): void {
   }
 
+
   public onClick() {
-    if(this.contact) this.clickEvent.emit(this.contact.idContact)
+    (this.contact) && this.clickEvent.emit(this.contact.idContact)
   }
+  public onDelete() {
+    (this.contact) && this.deleteEvent.emit(this.contact.idContact)
+  }
+
 
 }

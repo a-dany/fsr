@@ -17,10 +17,10 @@
         <!-- RIGHT SIDE -->
         <div class="col-lg-7 px-lg-5" style="height: 35em;">
             <div class="container w-100 h-100" style="padding: 0 !important;">
-                <input appsearch class="form-control w-100 px-4 py-3" type="text" placeholder="Search"/>
+                <input appsearch class="form-control w-100 px-4 py-3" type="text" placeholder="Search" [(ngModel)]="search" (ngModelChange)="updateSearch()"/>
                 <div contacts scrolling class="d-flex flex-column mt-4 overflow-auto" style="height: 83%;">
-                    <div *ngFor="let contact of list">
-                        <app-contact-item [contact]="contact" (clickEvent)="redirect($event)"></app-contact-item>
+                    <div *ngFor="let contact of displayList">
+                        <app-contact-item [contact]="contact" (clickEvent)="redirect($event)" (deleteEvent)="delete($event)"></app-contact-item>
                     </div>
                 </div>
             </div>

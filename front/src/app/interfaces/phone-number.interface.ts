@@ -3,3 +3,7 @@ export interface PhoneNumber {
     phoneKind: string,
     phoneNumber: string
 }
+export interface PostPhoneNumber {
+    phoneKind: string,
+    phoneNumber: string
+}
