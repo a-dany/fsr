@@ -4,4 +4,15 @@
     &:hover {
         background-color: #00000012;
     }
+    .icon-parent:after {
+        content: "";
+        position: absolute;
+        top: 28%;
+        left: 27%;
+        height: 28px;
+        width: 28px;
+        border-radius: 999px;
+        z-index: -1;
+        background: #c5d7e8;
+    }
 }

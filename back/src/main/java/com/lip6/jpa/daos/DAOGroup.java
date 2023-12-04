@@ -1,5 +1,6 @@
 package com.lip6.jpa.daos;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
@@ -159,6 +160,24 @@ public class DAOGroup {
         }
         catch (Exception e) { e.printStackTrace(); }
         return success;
+    }
+
+    public List<GroupEntity> getAll() {
+
+        List<GroupEntity> groups;
+        String jpql = "SELECT g FROM Group g";
+
+        try {
+            EntityManager em = JpaUtil.getEmf().createEntityManager();
+            EntityTransaction tx = em.getTransaction();
+            
+            tx.begin();
+            groups = em.createQuery(jpql, GroupEntity.class).getResultList();
+            tx.commit();
+            em.close();
+        } 
+        catch(Exception e) { groups = Arrays.asList(); e.printStackTrace(); }
+        return groups;
     }
 
 }

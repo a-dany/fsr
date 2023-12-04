@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
 import { Contact, PostContact } from 'src/app/interfaces/contact.interface';
 import { ContactService } from 'src/app/services/contact.service';
 
@@ -13,7 +14,7 @@ export class ContactCreateComponent implements OnInit {
 
   public headers!:HttpHeaders;
   constructor(
-    private _contacts: ContactService
+    private _contacts: ContactService, private route:Router
   ) { }
   ngOnInit(): void {
   }
@@ -37,7 +38,11 @@ export class ContactCreateComponent implements OnInit {
   }
   private save(c:PostContact) {
     // console.log(JSON.stringify(c))
-    this._contacts.save(c).subscribe( data => console.table(data) )
+    this._contacts.save(c).subscribe( 
+      data => {
+         this.route.navigate(['/contacts'])
+      }
+    )
   }
 
 }

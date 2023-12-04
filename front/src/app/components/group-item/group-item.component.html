@@ -1,0 +1,9 @@
+<div item class="border rounded py-3 d-flex">
+    <div class="col-10 d-flex px-4 flex-column justify-content-center">
+        <span item-title class="f-lexend m-0">{{group.name}}</span>
+        <span item-text class="f-montserrat">Contact count : {{group.contacts.length}}</span>
+    </div>
+    <div class="col-2 d-flex align-items-center justify-content-center" (click)="delete()">
+        <div item-icon class="f-icon">close</div>
+    </div>
+</div>

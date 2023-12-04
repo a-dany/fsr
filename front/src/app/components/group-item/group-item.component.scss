@@ -1,0 +1,37 @@
+[item] {
+    
+    // line-height: 1.5;
+    cursor: pointer;
+    position: relative;
+    // border: solid 1px #51a27f;
+    // color: white;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0; right: 0;
+        width: .12rem;
+        height: 100%;
+        background-color: 51a27f;
+        border-radius: 999px;
+    }
+
+    [item-title] {
+        font-size: 12pt;
+        font-weight: 400;
+    }
+    [item-text] {
+        font-size: 10pt;
+        opacity: .7;
+        font-weight: 400;
+    }
+    [item-icon] {
+        transition-duration: .3s;
+        opacity : 0;
+    }
+
+    &:hover {
+        [item-icon] { opacity : 1; }
+    } 
+
+}

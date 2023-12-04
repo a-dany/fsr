@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Contact, PostContact } from '../interfaces/contact.interface';
 import { HeaderUtils } from './header.utils';
+import { Group } from '../interfaces/group.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContactService {
+export class GroupService {
 
   
   /***| ATTRIBUTES |***/
   
   private uri:string =`/api`;
-  private url:string =`${this.uri}/contacts`
+  private url:string =`${ this.uri }/groups`;
   private headers?:HttpHeaders;
   
   
@@ -26,14 +26,14 @@ export class ContactService {
 
   /***| ACCESSORS |***/
 
-  public get():Observable<Contact[]> {
-    return this.http.get<Contact[]>( this.url );
+  public get():Observable<Group[]> {
+    return this.http.get<Group[]>( this.url );
   }
-  public getId(id:string):Observable<Contact> {
-    return this.http.get<Contact>( `${this.url}/${id}` );
+  public getId(id:string):Observable<Group> {
+    return this.http.get<Group>( `${this.url}/${id}` );
   }
-  public save(c:PostContact):Observable<any> {
-    return this.http.post<Contact>( this.url, c, { headers: this.headers } );
+  public save(g:string):Observable<any> {
+    return this.http.post<Group>( this.url, g, { headers: this.headers } );
   }
   public delete(id: number) {
     return this.http.delete<any>(`${this.url}/${id}`)

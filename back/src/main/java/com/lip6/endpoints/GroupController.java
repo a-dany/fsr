@@ -11,6 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import com.lip6.dtos.Group;
 import com.lip6.services.GroupService;
 
 @Path("/groups")
@@ -37,6 +39,12 @@ public class GroupController {
     @Produces({MediaType.APPLICATION_JSON})
     public Response get(@PathParam("id") Long id) {
         return this.groups.get(id).map(Response::ok).orElse(Response.status(404)).build();
+    }
+
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<Group> getAll() {
+        return this.groups.getAll();
     }
 
     @DELETE @Path("/{id}")

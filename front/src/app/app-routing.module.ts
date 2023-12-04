@@ -4,12 +4,14 @@ import { ContactListComponent } from './pages/contacts/contact-list/contact-list
 import { HomeComponent } from './pages/home/home.component';
 import { ContactDetailComponent } from './pages/contacts/contact-detail/contact-detail.component';
 import { ContactCreateComponent } from './pages/contacts/contact-create/contact-create.component';
+import { GroupListComponent } from './pages/groups/group-list/group-list.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'contacts', component:ContactListComponent},
   {path:'contacts/id/:id', component:ContactDetailComponent},
-  {path:'contacts/create', component:ContactCreateComponent}
+  {path:'contacts/create', component:ContactCreateComponent}, 
+  {path:'groups', component:GroupListComponent}, 
 ];
 
 @NgModule({

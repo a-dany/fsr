@@ -5,6 +5,7 @@ import com.lip6.dtos.Group;
 import com.lip6.jpa.daos.DAOGroup;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class GroupService {
     
@@ -36,6 +37,10 @@ public class GroupService {
 
     public boolean update(Long id, String name) {
         return this.dao.update(id, name);
+    }
+
+    public List<Group> getAll() {
+        return this.dao.getAll().stream().map(g -> Mapper.map(g, Group.class)).collect(Collectors.toList());
     }
 
 }

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactDetailComponent } from './pages/contacts/contact-detail/contact-detail.component';
 import { ContactCreateComponent } from './pages/contacts/contact-create/contact-create.component';
 import { FormsModule } from '@angular/forms';
+import { GroupListComponent } from './pages/groups/group-list/group-list.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ContactDetailComponent,
     ContactCreateComponent,
+    GroupListComponent
   ],
   imports: [
     BrowserModule,
