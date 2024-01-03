@@ -89,3 +89,8 @@ hr[appdivider] {
     &>span  { font-size: 11pt; }
     input:focus + span { color: #6491d2; }
 }
+[hover]:hover {
+    cursor: pointer;
+    transition-duration: .3s;
+    background: #ededed;
+}

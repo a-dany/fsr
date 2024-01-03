@@ -24,7 +24,7 @@ export class GroupService {
   }
   
 
-  /***| ACCESSORS |***/
+  /***| GROUP API |***/
 
   public get():Observable<Group[]> {
     return this.http.get<Group[]>( this.url );
@@ -38,5 +38,17 @@ export class GroupService {
   public delete(id: number) {
     return this.http.delete<any>(`${this.url}/${id}`)
   }
+
+
+  /***| CONTACT GROUP MANAGEMENT |***/
+
+  public addContact(group:string, contacts: string[]):Observable<any> {
+    return this.http.post(`${this.url}/${group}/contacts/add`, contacts)
+  }
+
+  public removeContact(group:string, contacts:string[]):Observable<any> {
+    return this.http.post(`${this.url}/${group}/contacts/remove`, contacts)
+  }
+
 
 }

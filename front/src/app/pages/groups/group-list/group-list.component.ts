@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Group } from 'src/app/interfaces/group.interface';
 import { GroupService } from 'src/app/services/group.service';
 
@@ -9,26 +10,27 @@ import { GroupService } from 'src/app/services/group.service';
 })
 export class GroupListComponent implements OnInit {
 
+
   private groups?:Group[];
   public  displayGroups?:Group[];
   public  search!:string;
 
-  constructor(public _groups:GroupService) { }
+  constructor(private _groups:GroupService, private _router:Router) { }
   ngOnInit(): void {
     this.getGroups();
   }
 
   public create() {
+    // this._router.navigate(['groups/create']);
     let name = prompt('Group Name');
     (name && name.length > 0) && this._groups.save(name).subscribe().add(() => this.getGroups())
   }
 
   public getGroups() {
-    this._groups.get()
-      .subscribe( data => this.groups = data )
+    this._groups.get().subscribe( data => this.groups = data )
       .add(
         () => this.displayGroups = this.groups
-      ) 
+      )
   }
 
   public updateSearch() {
@@ -39,6 +41,9 @@ export class GroupListComponent implements OnInit {
     confirm('Delete this group ?') && this._groups.delete(id).subscribe().add(
       () => this.getGroups()
     )
+  }
+  public click(id: number) {
+    this._router.navigate(['groups/id/', id])
   }
 
 }

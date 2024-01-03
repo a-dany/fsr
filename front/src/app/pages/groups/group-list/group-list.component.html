@@ -30,12 +30,12 @@
         </div>
         <!-- RIGHT SIDE -->
         <div class="col-lg-6">
-            <input appsearch class="form-control w-100 px-4 py-3" type="text" placeholder="Search" [(ngModel)]="search" (ngModelChange)="updateSearch()" />
+            <input appsearch class="form-control w-100 px-4 py-3" type="text" placeholder="Search" [(ngModel)]="search" (ngModelChange)="updateSearch()"/>
         </div>
 
         <div class="mt-5 px-0 mx-0 row">
             <div *ngFor="let group of displayGroups" class="col-4 mb-3">
-                <app-group-item [group]="group" (onDelete)="delete($event)"></app-group-item>
+                <app-group-item [group]="group" (onDelete)="delete($event)" (onClick)="click($event)"></app-group-item>
             </div>
         </div>
 

@@ -1,6 +1,5 @@
 [navbar] {
     $color: #95bfab;
-    // position: sticky !important;
     top: 0; left: 0;
     width: 100%;
     z-index: 999;
@@ -32,17 +31,17 @@
     .nav-link {
         position: relative;
         &:not(.f-icon)::after {
-            content: '';
+            content: "";
             position: absolute;
-            border: solid 1px $color;
+            height: 2PX;
             border-radius: 999px;
             bottom: 0px;
             left: 0;
-            width: 80%;
-            box-shadow: 0 0 6PX #bffade;
+            width: 99%;
             transform: scaleX(0);
-            transform-origin: left;
-            transition-duration: .3s;
+            transform-origin: LEFT;
+            transition-duration: 0.3s;
+            background: $color;
         }
         &:is(.active,:hover)::after {
             transform: scaleX(1);

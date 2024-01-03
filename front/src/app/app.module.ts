@@ -10,6 +10,8 @@ import { ContactDetailComponent } from './pages/contacts/contact-detail/contact-
 import { ContactCreateComponent } from './pages/contacts/contact-create/contact-create.component';
 import { FormsModule } from '@angular/forms';
 import { GroupListComponent } from './pages/groups/group-list/group-list.component';
+import { GroupDetailComponent } from './pages/groups/group-detail/group-detail.component';
+import { GroupCreateComponent } from './pages/groups/group-create/group-create.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { GroupListComponent } from './pages/groups/group-list/group-list.compone
     HomeComponent,
     ContactDetailComponent,
     ContactCreateComponent,
-    GroupListComponent
+    GroupListComponent,
+    GroupDetailComponent,
+    GroupCreateComponent
   ],
   imports: [
     BrowserModule,

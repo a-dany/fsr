@@ -19,7 +19,7 @@
             <div class="container w-100 h-100" style="padding: 0 !important;">
                 <input appsearch class="form-control w-100 px-4 py-3" type="text" placeholder="Search" [(ngModel)]="search" (ngModelChange)="updateSearch()"/>
                 <div contacts scrolling class="d-flex flex-column mt-4 overflow-auto" style="height: 83%;">
-                    <div *ngFor="let contact of displayList">
+                    <div hover class="rounded-1" *ngFor="let contact of displayList">
                         <app-contact-item [contact]="contact" (clickEvent)="redirect($event)" (deleteEvent)="delete($event)"></app-contact-item>
                     </div>
                 </div>
