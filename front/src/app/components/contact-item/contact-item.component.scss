@@ -1,19 +1,14 @@
 [contact-item] {
-    // cursor: pointer;
-    // transition-duration: .3s;
-    // &:hover {
-    //     background-color: #00000012;
-    // }
     .icon-parent:after {
-        // content: "";
+        content: "";
         position: absolute;
-        top: 28%;
-        left: 27%;
-        height: 28px;
-        width: 28px;
+        top: 0.4em;
+        left: .2em;
+        height: 0.75em;
+        width: 0.75em;
         border-radius: 999px;
         z-index: -1;
-        background: #c5d7e8;
+        background: #d2e0ed;
     }
 }
 [text-inline] {

@@ -1,16 +1,16 @@
 <div contact-item class="contact-item d-flex flex-row py-1 rounded-3 overflow-hiddenx w-100 overflow-hidden">
     <div class="col-2 overflow-hidden position-relative" (click)="onClick()">
-        <div class="icon-parent f-icon fw-lighter fs-1 d-flex align-items-center justify-content-start px-2">
+        <div class="icon-parent f-icon fw-lighter fs-1 d-flex align-items-center justify-content-start">
             account_circle
         </div>
     </div>
     <div class="col-9 px-3 d-flex flex-column justify-content-center" (click)="onClick()">
-        <div class="fw-bold f-lexend">{{this.contact?.firstName}} {{this.contact?.lastName}}</div>
+        <div class="fw-bold f-poppins">{{this.contact?.firstName}} {{this.contact?.lastName}}</div>
         <div apptext text-inline>
             {{ this?.contact?.address?.street }} {{ this?.contact?.address?.zip }} {{ this?.contact?.address?.city }} {{ this?.contact?.address?.country }}
         </div>
     </div>
-    <div class="col-1 d-flex justify-content-center align-items-center px-3" (click)="onDelete()">
-        <div class="f-icon">delete</div>
+    <div class="col-1 d-flex justify-content-end align-items-center" (click)="onDelete()">
+        <div class="f-icon fs-5">person_remove</div>
     </div>
 </div>

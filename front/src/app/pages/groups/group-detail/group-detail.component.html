@@ -13,18 +13,11 @@
     </div>
 
     <!-- CONTACT CARD -->
-    <!-- <div class="d-flex flex-row lustify-content-between w-100 h-100 mt-5">
-        <div *ngFor="let contact of group.contacts" class="px-0 col-4 overflow-hidden rounded-1">
-            <div class="">
-                <app-contact-item [contact]="contact" (clickEvent)="redirect($event)" (deleteEvent)="delete($event)"></app-contact-item>
-            </div>
-        </div>
-    </div> -->
 
     <div class="mt-5 px-0 row">
         <div *ngFor="let contact of group.contacts" class="col-4 mb-3">
             <!-- <app-group-item [group]="group" (onDelete)="delete($event)" (onClick)="click($event)"></app-group-item> -->
-            <div hover class="border rounded-1 p-2">
+            <div hover class="border rounded-1 p-2 px-4">
                 <app-contact-item [contact]="contact" (clickEvent)="redirect($event)" (deleteEvent)="delete($event)"></app-contact-item>
             </div>
         </div>
