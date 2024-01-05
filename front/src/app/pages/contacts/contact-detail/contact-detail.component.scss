@@ -1,0 +1,21 @@
+[profile] {
+    $d : 5em;
+    // top: -($d / 2);
+    top: -1.5em;
+    width: $d;
+    height: $d;
+    position: absolute;
+    background-color: var(--bs-blue);
+    color: white !important;
+    border-radius: 5px !important;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    & > .f-icon {
+        transform: scale(2.5);
+        font-weight: 200;
+    }
+}

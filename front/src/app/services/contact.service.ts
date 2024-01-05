@@ -39,4 +39,12 @@ export class ContactService {
     return this.http.delete<any>(`${this.url}/${id}`)
   }
 
+
+  /***| PHONE NUMBERS |***/
+  
+  public removePhoneNumber(idContact: number, id: number) {
+    // return this.http.post<>();
+    alert('Not Implemented.')
+  }
+
 }

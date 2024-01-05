@@ -94,3 +94,11 @@ hr[appdivider] {
     transition-duration: .3s;
     background: #ededed;
 }
+[pill] {
+    font-size: 10pt; 
+    font-weight: 500; 
+    color: #000000b0;
+    background: #dee2e68c;
+    width: fit-content;
+    cursor: pointer;
+}

@@ -24,4 +24,16 @@ export class ContactDetailComponent implements OnInit {
     );
   }
 
+  public addPhoneNumber() {
+    let pn = prompt('PhoneNumber')
+    console.log(pn)
+  }
+
+  public removePhoneNumber(id:number) {
+    if(this.contact && confirm('Remove this phone number ?')) {
+      this._contacts.removePhoneNumber(this.contact?.idContact, id)
+      // .subscribe( data => console.log(data) );
+    }
+  }
+
 }

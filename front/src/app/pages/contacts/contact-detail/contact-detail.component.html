@@ -9,19 +9,53 @@
         <!-- LEFT SIDE -->
         <div class="col-lg-6">
             <h1 class="f-poppins fw-bold mb-4">Contact Detail</h1>
-            <div apptext>
+            <div apptext class="col-9">
                 Check out all your stored contacts here. Update and create contacts. Search specific contacts with the searchbar.
             </div>
             <button appbtn class="btn btn-warning mt-5 col-5 py-2">Update</button>
         </div>
+
         <!-- RIGHT SIDE -->
-        <div class="col-lg-6 px-lg-5 border border-danger" style="height: 35em;">
+        <div class="col-lg-6 px-lg-5 position-relative" style="height: 35em;">
+            
+            <!-- display -->
             <div class="container h-100 rounded-3 col-12 mx-auto overflow-auto p-5" style="box-shadow: 0 0 50PX #090e201c">
-                <div>{{this?.contact?.firstName}}</div>
-                <div>{{this?.contact?.lastName}}</div>
-                <div>{{this?.contact?.email}}</div>
+                <div profile shadow>
+                    <div class="f-icon">person</div>
+                </div>
+
+                <hr class="my-3 opacity-0">
+                <div class="f-poppins fs-4 mt-4 fw-bolder">{{this?.contact?.firstName}} {{this?.contact?.lastName}}</div>
+                <div class="my-3">
+                    <div pill class="rounded-2 px-3 py-1 f-montserrat">{{this?.contact?.email}}</div>
+                </div>
+
+                <hr appdivider class="col-4 mt-4" />
+
+                <div class="f-lexend fs-5 mt-4">Address</div>
+                <div class="mt-1">
+                    <!--  pill class="rounded-2 px-3 py-1 f-montserrat" -->
+                    <div>{{ this?.contact?.address?.street }} {{ this?.contact?.address?.zip }} {{ this?.contact?.address?.city }} {{ this?.contact?.address?.country }}</div>
+                </div>
+
+                <hr appdivider class="col-4 mt-4" />
+
+                <div class="f-lexend fs-5 mt-4">Phone Numbers</div>
+                <div class="mt-2 d-flex flex-row gap-2 flex-wrap">
+                    <div pill class="rounded-2 px-3 py-1 f-montserrat" *ngFor="let pn of contact?.phoneNumbers" (click)="removePhoneNumber(pn.id)">
+                        {{pn.phoneNumber }}
+                    </div>
+                    <div div pill class="rounded-2 px-3 py-1 f-poppins fw-semibold" (click)="addPhoneNumber()">+</div>
+                </div>
+                
             </div>
+            <!-- display : end -->
+
+            <!-- update -->
+            <!-- update : end -->
+
         </div>
+        <!-- RIGHT SIDE : END -->
 
     </div>
 
