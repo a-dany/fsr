@@ -1,8 +1,7 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Contact, PostContact } from 'src/app/interfaces/contact.interface';
+import { PostContact } from 'src/app/interfaces/contact.interface';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -12,18 +11,35 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class ContactCreateComponent implements OnInit {
 
-  public headers!:HttpHeaders;
+
+  public phones!:FormGroup;
+  private fb = new FormBuilder();
+
   constructor(
     private _contacts: ContactService, private route:Router
   ) { }
   ngOnInit(): void {
+    this.phones = this.fb.group({
+      items: this.fb.array([])
+    })
   }
 
-  public submit(identityForm:any, addressForm:any, phonesForm:any) {
+  public addPhone() {
+    const item = this.fb.control('')
+    this.items.push(item);
+  }
+  get items():FormArray {
+    return this.phones.get('items') as FormArray
+  }
 
+
+
+  public submit(identityForm:any, addressForm:any) {
+
+    let phonesForm = this.phones;
     let identity = identityForm.form.value; 
     let address = addressForm.form.value;
-    let phones = phonesForm.form.value;
+    let phones = phonesForm.value; // TODO : Revoir
 
     let contact:PostContact = {
       lastName: identity.lname, firstName: identity.fname, email:identity.mail,
@@ -37,7 +53,6 @@ export class ContactCreateComponent implements OnInit {
 
   }
   private save(c:PostContact) {
-    // console.log(JSON.stringify(c))
     this._contacts.save(c).subscribe( 
       data => {
          this.route.navigate(['/contacts'])

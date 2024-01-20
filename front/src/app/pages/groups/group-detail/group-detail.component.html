@@ -16,7 +16,6 @@
 
     <div class="mt-5 px-0 row">
         <div *ngFor="let contact of group.contacts" class="col-4 mb-3">
-            <!-- <app-group-item [group]="group" (onDelete)="delete($event)" (onClick)="click($event)"></app-group-item> -->
             <div hover class="border rounded-1 p-2 px-4">
                 <app-contact-item [contact]="contact" (clickEvent)="redirect($event)" (deleteEvent)="delete($event)"></app-contact-item>
             </div>

@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="col-9 px-3 d-flex flex-column justify-content-center" (click)="onClick()">
-        <div class="fw-bold f-poppins">{{this.contact?.firstName}} {{this.contact?.lastName}}</div>
+        <div identity class="fw-bold f-poppins">{{this.contact?.firstName}} {{this.contact?.lastName}}</div>
         <div apptext text-inline>
             {{ this?.contact?.address?.street }} {{ this?.contact?.address?.zip }} {{ this?.contact?.address?.city }} {{ this?.contact?.address?.country }}
         </div>

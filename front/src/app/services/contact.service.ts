@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Contact, PostContact } from '../interfaces/contact.interface';
 import { HeaderUtils } from './header.utils';
+import { PhoneNumber, PostPhoneNumber } from '../interfaces/phone-number.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -42,9 +43,12 @@ export class ContactService {
 
   /***| PHONE NUMBERS |***/
   
-  public removePhoneNumber(idContact: number, id: number) {
-    // return this.http.post<>();
-    alert('Not Implemented.')
+  public addPhoneNumber(idContact:number, pn:PostPhoneNumber):Observable<any> {
+    return this.http.post<any>(`${this.url}/${idContact}/phone_numbers/add`, pn);
+  }
+  
+  public removePhoneNumber(idContact: number, id: number):Observable<any> {
+    return this.http.post<any>(`${this.url}/${idContact}/phone_numbers/remove/${id}`, {});
   }
 
 }

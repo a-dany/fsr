@@ -18,3 +18,8 @@
     font-size: 10pt;
     letter-spacing: .2mm;
 }
+[identity] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}

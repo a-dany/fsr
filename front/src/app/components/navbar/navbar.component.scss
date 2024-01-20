@@ -6,7 +6,7 @@
     & .f-icon {
         transition-duration: .2s;
         cursor: pointer;
-        &:hover { 
+        &:hover {
             color: $color; 
         }
     }
@@ -33,7 +33,7 @@
         &:not(.f-icon)::after {
             content: "";
             position: absolute;
-            height: 2PX;
+            // height: 2PX;
             border-radius: 999px;
             bottom: 0px;
             left: 0;
@@ -41,7 +41,8 @@
             transform: scaleX(0);
             transform-origin: LEFT;
             transition-duration: 0.3s;
-            background: $color;
+            // background: $color;
+            border:solid 1px $color;
         }
         &:is(.active,:hover)::after {
             transform: scaleX(1);
