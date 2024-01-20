@@ -71,11 +71,17 @@ public class ContactController {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     public Response addPhoneNumber(@PathParam("id") Long id, PhoneNumber pn) {
-        // this.contact.addPhoneNumber(id, pn);
-        return Response.ok("Not implemented yet").build();
+        this.service.addPhoneNumber(id, pn);
+        return Response.noContent().build();
     }
 
-    // TODO : UPDATE PHONE_NUMBERS { ADD + REMOVE }
-    // TODO : UPDATE ADDRESS { CHANGE VALUES }
-    
+    // @Consumes({MediaType.APPLICATION_JSON})
+    @POST @Path("/{id}/phone_numbers/remove/{pnid}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response removePhoneNumber(@PathParam("id") Long id, @PathParam("pnid") Long pn) {
+        this.service.removePhoneNumber(id, pn);
+        return Response.noContent().build();
+    }
+
+
 }

@@ -8,6 +8,7 @@ import com.lip6._config.Mapper;
 import com.lip6.dtos.Contact;
 import com.lip6.dtos.PhoneNumber;
 import com.lip6.jpa.daos.DAOContact;
+import com.lip6.jpa.entities.PhoneNumberEntity;
 
 @Service
 public class ContactService implements IContactService {
@@ -29,8 +30,11 @@ public class ContactService implements IContactService {
     }
 
     public void addPhoneNumber(Long id, PhoneNumber pn) {
-        // pn.setId(null);
-        
+        pn.setId(null);
+        this.dao.addPhoneNumber(id, Mapper.map(pn, PhoneNumberEntity.class));
+    }
+    public void removePhoneNumber(Long id, Long pnId) {
+        this.dao.removePhoneNumber(id, pnId);
     }
 
 }

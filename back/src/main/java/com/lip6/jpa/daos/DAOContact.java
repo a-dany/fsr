@@ -7,6 +7,8 @@ import com.lip6.jpa.entities.AddressEntity;
 import com.lip6.jpa.entities.ContactEntity;
 import com.lip6.jpa.entities.PhoneNumberEntity;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
+
 import java.util.Arrays;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -110,6 +112,67 @@ public class DAOContact {
         }
         catch (Exception e) { success = false; e.printStackTrace(); }
         return success;
+    }
+
+    public boolean addPhoneNumber(Long id, PhoneNumberEntity pn) {
+        boolean result = false;
+        ContactEntity ce;
+
+        try {
+
+            EntityManager em = JpaUtil.getEmf().createEntityManager();
+            EntityTransaction tx = em.getTransaction();
+
+            tx.begin();
+            ce = em.merge(this.get(id)); // Important merge for synchronization
+            if (ce != null){
+                ce.addPhoneNumber(pn);
+                em.persist(ce);
+            } 
+            tx.commit();
+            em.close();
+
+            result = true;
+            
+        } catch (Exception e) { result = false; e.printStackTrace(); }
+
+        return result;
+    }
+
+    public boolean removePhoneNumber(Long id, Long pnId) {
+        String jpql = "SELECT p FROM PhoneNumber p JOIN p.contact c WHERE p.id = :pnId AND c.idContact = :id"; 
+        boolean result = false;
+        ContactEntity ce; PhoneNumberEntity savedPn;
+
+        try {
+
+            EntityManager em = JpaUtil.getEmf().createEntityManager();
+            EntityTransaction tx = em.getTransaction();
+
+            tx.begin();
+
+            ce = this.get(id);
+            if (ce != null) {
+                ce.removePhoneNumber(pnId);
+                savedPn = em.createQuery(jpql,  PhoneNumberEntity.class).setParameter("pnId", pnId).setParameter("id", id).getSingleResult();
+                if (savedPn != null) {
+                    savedPn = em.merge(savedPn);
+                    savedPn.setContact(null);
+                    em.remove(savedPn);
+                }
+                // em.persist(savedPn);
+                em.persist(em.merge(ce));
+            }
+            
+            tx.commit();
+            em.close ();
+
+            result = true;
+            
+        } 
+        catch (Exception e) { result = false; e.printStackTrace(); }
+
+        return result;
     }
 
 }

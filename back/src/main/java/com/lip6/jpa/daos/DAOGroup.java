@@ -170,11 +170,10 @@ public class DAOGroup {
         try {
             EntityManager em = JpaUtil.getEmf().createEntityManager();
             EntityTransaction tx = em.getTransaction();
-            
-            tx.begin();
+            tx.begin ();
             groups = em.createQuery(jpql, GroupEntity.class).getResultList();
             tx.commit();
-            em.close();
+            em.close ();
         } 
         catch(Exception e) { groups = Arrays.asList(); e.printStackTrace(); }
         return groups;

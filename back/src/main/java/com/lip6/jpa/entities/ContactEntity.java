@@ -69,5 +69,8 @@ public class ContactEntity {
 		pn.setContact(this);
 		this.phoneNumbers.add(pn);
 	}
+    public void removePhoneNumber(Long id) {
+		phoneNumbers.removeIf(pn -> id.equals(pn.getId()));
+    }
 
 }
