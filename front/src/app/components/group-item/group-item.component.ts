@@ -11,6 +11,7 @@ export class GroupItemComponent implements OnInit {
   @Input () group!:Group;
   @Output() onDelete = new EventEmitter<number>();
   @Output() onClick  = new EventEmitter<number>();
+  
 
   constructor() { }
   ngOnInit(): void {

@@ -1,0 +1,28 @@
+<div main class="position-absolute d-flex align-items-center justify-content-center top-0 left-0">
+    <div shadow content class="col-5 mx-auto bg-white rounded-3">
+
+        <div class="h-100 p-5 overflow-hidden position-relative">
+
+            <div class="w-100 d-flex align-items-center justify-content-between">
+                <h2 class="f-poppins fw-bold">Contacts</h2>
+                <div class="f-icon h-100 text-muted fs-5" (click)="closeModal()" style="cursor:pointer">close</div>
+            </div>
+
+            <input appsearch class="form-control w-100 px-3 py-3 my-4" type="text" placeholder="Search"/>
+
+            <div #contactList class="overflow-y-auto" style="height:50vh">
+                <div *ngFor="let contact of contacts">
+                    <div item class="px-4" style="cursor:pointer" [attr.contact-id]="contact.idContact">
+                        <app-contact-item [contact]="contact" (clickEvent)="toggleContact(contact.idContact)"></app-contact-item>
+                    </div>
+                </div>
+            </div>
+
+            <button appbtn class="btn btn-outline-primary mt-4 px-3 py-2 col-6" (click)="submit()">Confirm</button>
+
+        </div>
+
+
+
+    </div>
+</div>

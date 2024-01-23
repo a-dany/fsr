@@ -16,7 +16,10 @@ export class GroupDetailComponent implements OnInit {
   public group!:Group;
   public search!:string;
 
+  public openModal   = false;
+  public toggleModal = () => this.openModal = !this.openModal; 
 
+  
   /***| INIT METHODS |***/
 
   constructor(private _groups:GroupService, private _route:ActivatedRoute, private _router:Router) { }
@@ -48,16 +51,20 @@ export class GroupDetailComponent implements OnInit {
       data => console.log(data)
     ).add( () => this.resetGroup() )
   }
-  // TODO : Fix contact selection
-  public addContacts() {
-    let values = [];
-    let id = prompt('Contact id');
-    if (id) {
-      values.push(id)
+
+  public addContacts(list:number[]) {
+    
+    let presentIds = this.group.contacts.map(e => e.idContact);
+    let values:string[] = list.filter(e => !presentIds.includes(e)).map(e => `${e}`);
+
+    if (values && values.length > 0) {
       this._groups.addContact(`${this.group.idGroup}`, values).subscribe(
         data => console.log(data)
       ).add( () => this.resetGroup() )
     }
+
+    this.openModal = false;
+
   }
 
 

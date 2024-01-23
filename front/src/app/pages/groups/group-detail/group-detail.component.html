@@ -1,6 +1,11 @@
 
 <app-navbar></app-navbar>
 
+<div *ngIf="openModal" class="position-absolute top-0 left-0" style="z-index: 9999;">
+    <app-contact-modal (onClose)="toggleModal()" (onSubmit)="addContacts($event)"></app-contact-modal>
+</div>
+
+
 <hr pagemargin />
 
 <div class="container mx-auto col-lg-8">
@@ -9,7 +14,7 @@
         See all the details about your contact group. You can import and delete contact from this group.
     </div>
     <div class="position-relative mt-5">
-        <button appbtn class="btn btn-warning col-3 py-2" (click)="addContacts()">Add contacts</button>
+        <button appbtn class="btn btn-warning col-3 py-2" (click)="toggleModal()">Add contacts</button>
     </div>
 
     <!-- CONTACT CARD -->
