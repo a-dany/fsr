@@ -7,12 +7,14 @@ import { ContactCreateComponent } from './pages/contacts/contact-create/contact-
 import { GroupListComponent } from './pages/groups/group-list/group-list.component';
 import { GroupDetailComponent } from './pages/groups/group-detail/group-detail.component';
 import { GroupCreateComponent } from './pages/groups/group-create/group-create.component';
+import { ContactUpdateComponent } from './pages/contacts/contact-update/contact-update.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'contacts', component:ContactListComponent},
   {path:'contacts/id/:id', component:ContactDetailComponent},
   {path:'contacts/create', component:ContactCreateComponent}, 
+  {path:'contacts/update/:id', component:ContactUpdateComponent}, 
   {path:'groups', component:GroupListComponent}, 
   {path:'groups/id/:id', component:GroupDetailComponent}, 
   {path:'groups/create', component:GroupCreateComponent}

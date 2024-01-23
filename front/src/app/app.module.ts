@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { GroupListComponent } from './pages/groups/group-list/group-list.component';
 import { GroupDetailComponent } from './pages/groups/group-detail/group-detail.component';
 import { GroupCreateComponent } from './pages/groups/group-create/group-create.component';
+import { ContactUpdateComponent } from './pages/contacts/contact-update/contact-update.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GroupCreateComponent } from './pages/groups/group-create/group-create.c
     ContactCreateComponent,
     GroupListComponent,
     GroupDetailComponent,
-    GroupCreateComponent
+    GroupCreateComponent,
+    ContactUpdateComponent
   ],
   imports: [
     BrowserModule,

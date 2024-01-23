@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+
+<hr pagemargin />
+
+<div class="container mx-auto col-lg-9 mb-5">
+    <div class="row w-100 mt-3">
+
+        <!-- LEFT SIDE -->
+        <div class="col-lg-5">
+            <div style="position: sticky; top: 8.5em;">
+                <h1 class="f-poppins fw-bold mb-4 py-2">Update Contact</h1>
+                <div apptext>
+                    <!-- todo : more suitable text needed -->
+                    Update the contact's main informations here using the obvious form on the right.
+                </div>
+                <button appbtn class="btn btn-warning mt-5 col-5 py-2" [routerLink]="['../']">Contact List</button>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-lg-7 px-lg-5">
+            <div scrolling class="container h-100 rounded-3 col-12 mx-auto p-5" style="box-shadow: 0 0 50PX #090e201c">
+                
+                <!-- IDENTITY -->
+                <form>
+                    <div class="f-lexend fs-5">Identifier</div>
+                    <div class="row mt-4">
+                        <div appinput class="col-6">
+                            <input class="form-control py-2" type="text" name="fname" [(ngModel)]="contact.firstName"/>
+                            <span class="f-lexend fw-light">First Name</span>
+                        </div>
+                        <div appinput class="col-6">
+                            <input class="form-control py-2" type="text" name="lname" [(ngModel)]="contact.lastName"/>
+                            <span class="f-lexend fw-light">Last Name</span>
+                        </div>
+                    </div>
+                    <div appinput class="col-12 mt-2">
+                        <input class="form-control py-2" type="text" name="mail" [(ngModel)]="contact.email"/>
+                        <span class="f-lexend fw-light">Email</span>
+                    </div>
+                </form>
+                <!-- END: IDENTITY -->
+
+                <hr appdivider class="col-4 mt-5" />
+
+                <!-- ADDRESS -->
+                <form>
+                    <div class="f-lexend fs-5 mt-5">Address</div>
+                    <div class="row mt-4">
+                        <div appinput class="col-12 mt-2">
+                            <input class="form-control py-2" type="text" name="street" [(ngModel)]="contact.address.street"/>
+                            <span class="f-lexend fw-light">Street</span>
+                        </div>
+                        <div appinput class="col-7 mt-2">
+                            <input class="form-control py-2" type="text" name="city" [(ngModel)]="contact.address.city"/>
+                            <span class="f-lexend fw-light">City</span>
+                        </div>
+                        <div appinput class="col-5 mt-2">
+                            <input class="form-control py-2" type="number" name="zip" [(ngModel)]="contact.address.zip"/>
+                            <span class="f-lexend fw-light">Zip Code</span>
+                        </div>
+                        <div appinput class="col-12 mt-2">
+                            <input class="form-control py-2" type="text" name="country" [(ngModel)]="contact.address.country"/>
+                            <span class="f-lexend fw-light">Country</span>
+                        </div>
+                    </div>
+                </form>
+                <!-- END: ADDRESS -->
+
+                <div class="mt-5">
+                    <div class="btn btn-outline-primary w-100 py-2" (click)="submit()">Update Contact</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

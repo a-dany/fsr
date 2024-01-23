@@ -12,7 +12,7 @@
             <div apptext class="col-9">
                 Check out all your stored contacts here. Update and create contacts. Search specific contacts with the searchbar.
             </div>
-            <button appbtn class="btn btn-warning mt-5 col-5 py-2">Update</button>
+            <button appbtn class="btn btn-warning mt-5 col-5 py-2" [routerLink]="['/contacts/update/', contact?.idContact]">Update</button>
         </div>
 
         <!-- RIGHT SIDE -->
@@ -50,9 +50,6 @@
                 
             </div>
             <!-- display : end -->
-
-            <!-- update -->
-            <!-- update : end -->
 
         </div>
         <!-- RIGHT SIDE : END -->
