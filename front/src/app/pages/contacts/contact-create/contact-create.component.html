@@ -58,24 +58,26 @@
                 <hr appdivider class="col-4 mt-5" />
 
                 <!-- PHONES -->
-                <form formGroup="phones">
+                <form #phonesForm="ngForm">
                     <div class="mt-5 d-flex flex-row align-items-center">
                         <span class="f-lexend fs-5 col-6">Phone numbers</span>
                         <span class="col-6 d-flex flex-row align-items-center justify-content-end">
-                            <div pill class="btn rounded-5 px-3 py-1 f-montserrat" (click)="addPhone()">add number</div>
+                            <!-- <div pill class="btn rounded-5 px-3 py-1 f-montserrat" (click)="addPhone()">add number</div> -->
                         </span>
                     </div>
-                    <div class="mt-4" formArrayName="items">
+                    <div class="mt-4">
+                        <input class="form-control py-2 w-100" type="text" name="phoneNumber" ngModel/>
+                    </div>
+                    <!-- <div class="mt-4" formArrayName="items">
                         <div *ngForm="let item in items.controls; let i = index">
-                            <!-- <span>aaaaaaaaaaaaa!</span> -->
                             <input class="form-control py-2 w-100" type="text" value="0789012345" [attr.name]="i"/>
                         </div>
-                    </div>
+                    </div> -->
                 </form>
                 <!-- END: PHONES -->
 
                 <div class="mt-5">
-                    <div class="btn btn-outline-primary w-100 py-2" (click)="submit(identityForm, addressForm)">Save Contact</div>
+                    <div class="btn btn-outline-primary w-100 py-2" (click)="submit(identityForm, addressForm, phonesForm)">Save Contact</div>
                 </div>
 
             </div>

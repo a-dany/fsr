@@ -34,12 +34,12 @@ export class ContactCreateComponent implements OnInit {
 
 
 
-  public submit(identityForm:any, addressForm:any) {
+  public submit(identityForm:any, addressForm:any, phonesForm:any) {
 
-    let phonesForm = this.phones;
+    // let phonesForm = this.phones;
     let identity = identityForm.form.value; 
     let address = addressForm.form.value;
-    let phones = phonesForm.value; // TODO : Revoir
+    let phones = phonesForm.form.value
 
     let contact:PostContact = {
       lastName: identity.lname, firstName: identity.fname, email:identity.mail,
@@ -61,7 +61,3 @@ export class ContactCreateComponent implements OnInit {
   }
 
 }
-
-/*
-let list = ["Jack","LeFou","mail@gmail.com","123 Street View","NY","82000","Country","0789012345"]; document.querySelectorAll('form input').forEach(e => { e.value = list[0]; console.log(list[0]); list = list.slice(1,list.length); let event = new Event('input', { bubbles: true }); e.dispatchEvent(event); })
-*/
