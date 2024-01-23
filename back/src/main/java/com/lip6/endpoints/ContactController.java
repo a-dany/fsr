@@ -5,6 +5,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -64,6 +65,15 @@ public class ContactController {
         ).build();
     }
 
+    @PUT @Path("/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response updateContact(@PathParam("id") Long id, Contact model) {
+        return Response.status(
+            this.service.updateContact(id, model) ? 201 : 500
+        ).build();
+    }
+
 
     /***| PHONE NUMBERS |***/
 
@@ -75,7 +85,6 @@ public class ContactController {
         return Response.noContent().build();
     }
 
-    // @Consumes({MediaType.APPLICATION_JSON})
     @POST @Path("/{id}/phone_numbers/remove/{pnid}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response removePhoneNumber(@PathParam("id") Long id, @PathParam("pnid") Long pn) {

@@ -8,6 +8,7 @@ import com.lip6._config.Mapper;
 import com.lip6.dtos.Contact;
 import com.lip6.dtos.PhoneNumber;
 import com.lip6.jpa.daos.DAOContact;
+import com.lip6.jpa.entities.ContactEntity;
 import com.lip6.jpa.entities.PhoneNumberEntity;
 
 @Service
@@ -35,6 +36,10 @@ public class ContactService implements IContactService {
     }
     public void removePhoneNumber(Long id, Long pnId) {
         this.dao.removePhoneNumber(id, pnId);
+    }
+
+    public boolean updateContact(Long id, Contact model) {
+        return this.dao.updateContact(id, Mapper.map(model, ContactEntity.class));
     }
 
 }

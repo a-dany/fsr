@@ -7,8 +7,6 @@ import com.lip6.jpa.entities.AddressEntity;
 import com.lip6.jpa.entities.ContactEntity;
 import com.lip6.jpa.entities.PhoneNumberEntity;
 import javax.persistence.EntityTransaction;
-import javax.persistence.NoResultException;
-
 import java.util.Arrays;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,6 +18,10 @@ public class DAOContact {
     // Fonctionnel
     public boolean add(Contact contact) {
         boolean success=false; 
+        
+        EntityManager em = JpaUtil.getEmf().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
         try {
 
             ContactEntity ce = new ContactEntity(
@@ -35,9 +37,6 @@ public class DAOContact {
                     pn -> ce.addPhoneNumber( Mapper.map(pn, PhoneNumberEntity.class) )
                 );
             }
-            
-            EntityManager em = JpaUtil.getEmf().createEntityManager();
-            EntityTransaction tx = em.getTransaction();
 
             tx.begin();
             em.persist(ce);
@@ -56,10 +55,10 @@ public class DAOContact {
         ContactEntity ce;
         String jpql = "SELECT c FROM Contact c LEFT JOIN FETCH c.address LEFT JOIN FETCH c.phoneNumbers WHERE c.idContact = :id"; 
 
-        try {
+        EntityManager em = JpaUtil.getEmf().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
 
-            EntityManager em = JpaUtil.getEmf().createEntityManager();
-            EntityTransaction tx = em.getTransaction();
+        try {
 
             tx.begin();
             ce = em.createQuery(jpql, ContactEntity.class).setParameter("id", id).getSingleResult();
@@ -76,11 +75,11 @@ public class DAOContact {
         
         List<ContactEntity> lce;
         String jpql = "SELECT c FROM Contact c";
-
+        
+        EntityManager em = JpaUtil.getEmf().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        
         try {
-            EntityManager em = JpaUtil.getEmf().createEntityManager();
-            EntityTransaction tx = em.getTransaction();
-            
             tx.begin();
             lce = em.createQuery(jpql, ContactEntity.class).getResultList();
             tx.commit();
@@ -94,10 +93,11 @@ public class DAOContact {
     public boolean delete(Long id) {
         ContactEntity ce;
         boolean success = false;
-        try {
 
-            EntityManager em = JpaUtil.getEmf().createEntityManager();
-            EntityTransaction tx = em.getTransaction();
+        EntityManager em = JpaUtil.getEmf().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        try {
 
             tx.begin();
             ce = em.merge(this.get(id)); // Important merge for synchronization
@@ -118,13 +118,13 @@ public class DAOContact {
         boolean result = false;
         ContactEntity ce;
 
+        EntityManager em = JpaUtil.getEmf().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
         try {
 
-            EntityManager em = JpaUtil.getEmf().createEntityManager();
-            EntityTransaction tx = em.getTransaction();
-
             tx.begin();
-            ce = em.merge(this.get(id)); // Important merge for synchronization
+            ce = em.merge(this.get(id));
             if (ce != null){
                 ce.addPhoneNumber(pn);
                 em.persist(ce);
@@ -143,11 +143,11 @@ public class DAOContact {
         String jpql = "SELECT p FROM PhoneNumber p JOIN p.contact c WHERE p.id = :pnId AND c.idContact = :id"; 
         boolean result = false;
         ContactEntity ce; PhoneNumberEntity savedPn;
+        
+        EntityManager em = JpaUtil.getEmf().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
 
         try {
-
-            EntityManager em = JpaUtil.getEmf().createEntityManager();
-            EntityTransaction tx = em.getTransaction();
 
             tx.begin();
 
@@ -160,7 +160,6 @@ public class DAOContact {
                     savedPn.setContact(null);
                     em.remove(savedPn);
                 }
-                // em.persist(savedPn);
                 em.persist(em.merge(ce));
             }
             
@@ -173,6 +172,37 @@ public class DAOContact {
         catch (Exception e) { result = false; e.printStackTrace(); }
 
         return result;
+    }
+
+    public boolean updateContact(Long id, ContactEntity model) {
+
+        boolean success = true;
+        ContactEntity ce;
+        EntityManager em = JpaUtil.getEmf().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        try {
+
+            tx.begin();
+            ce = this.get(id);
+
+            if(ce == null) success = false;
+            else {
+                ce.setAddress(model.getAddress());
+                ce.setFirstName(model.getFirstName());
+                ce.setLastName(model.getLastName());
+                ce.setEmail(model.getEmail());
+                em.merge(ce);
+                tx.commit();
+            }
+
+            tx.commit();
+
+        }
+        catch(Exception e) { success = false; }
+
+        return success;
+
     }
 
 }
