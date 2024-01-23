@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from 'src/app/interfaces/contact.interface';
 import { ContactService } from 'src/app/services/contact.service';
 
@@ -12,21 +12,30 @@ import { ContactService } from 'src/app/services/contact.service';
 export class ContactUpdateComponent implements OnInit {
 
   public contact!:Contact;
+  private idContact!:string;
 
-  constructor(private _route:ActivatedRoute, private _contacts:ContactService) { }
+  constructor(private _route:ActivatedRoute, private _router:Router, private _contacts:ContactService) { }
   ngOnInit(): void {
     this.initContact();
   }
 
   public initContact() {
-    let idContact = this._route.snapshot.paramMap.get("id");
-    (idContact) && this._contacts.getId(idContact).subscribe(
-      data => this.contact = data
-    )
+    let idc = this._route.snapshot.paramMap.get("id");
+    if (idc) {
+      this.idContact = idc
+      this._contacts.getId(this.idContact).subscribe(
+        data => this.contact = data
+      )
+    }
+
   }
 
   public submit() {
-    console.log(this.contact);
+    this._contacts.update(this.idContact, this.contact).subscribe(
+      data => {
+        this._router.navigate(['contacts/id', this.idContact])
+      }
+    );
   }
 
 }

@@ -36,10 +36,12 @@ export class ContactService {
   public save(c:PostContact):Observable<any> {
     return this.http.post<Contact>( this.url, c, { headers: this.headers } );
   }
-  public delete(id: number) {
+  public delete(id: number):Observable<any> {
     return this.http.delete<any>(`${this.url}/${id}`)
   }
-
+  public update(id:string, contact:Contact):Observable<any> {
+    return this.http.put<any>(`${this.url}/${id}`, contact)
+  }
 
   /***| PHONE NUMBERS |***/
   
